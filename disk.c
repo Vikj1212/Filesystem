@@ -45,7 +45,7 @@ struct _directoryEntry * directory;
 
 struct inode
 {
-    uint32_t block[BLOCKS_PER_FILE];
+    int32_t block[BLOCKS_PER_FILE];
     short in_use;
     uint8_t attribute;
     uint32_t file_size;
@@ -64,7 +64,7 @@ int32_t findFreeBlock()
 {
   for(int i = 0; i < NUM_BLOCKS; i++)
   {
-    if(free_blocks[i])
+    if(free_blocks[i+1001])
     {
       return i + 1001;
     }
@@ -112,7 +112,7 @@ void init()
 
     for(int j = 0; j < NUM_BLOCKS; j++)
     {
-      inodes[i].block[j] = 0;
+      inodes[i].block[j] = -1;
       inodes[i].in_use = 0;
       inodes[i].attribute = 0;
       inodes[i].file_size = 0;
@@ -400,6 +400,8 @@ void insert(char *filename)
     // the fseek at the top of the loop to position us to the correct spot.
     offset    += BLOCK_SIZE;
 
+    free_blocks[block_index] = 0;
+
       // Increment the index into the block array 
       // DO NOT just increment block index in your file system
     block_index = findFreeBlock();
@@ -480,7 +482,14 @@ void retrieve(char *filename, char *new_filename)
   {
     uint8_t info[1024];
     //int32_t i_byte = fread( info, BLOCK_SIZE, 1, inodes[directory[index].inode].block[i] );
-    int32_t o_byte = fwrite( &inodes[directory[index].inode].block[i], BLOCK_SIZE, 1, ofp );
+    if( NF_size >= 1024 )
+    {
+      int32_t o_byte = fwrite( &data[inodes[directory[index].inode].block[i]], BLOCK_SIZE, 1, ofp );
+    }
+    else
+    {
+      int32_t o_byte = fwrite( &data[inodes[directory[index].inode].block[i]], NF_size, 1, ofp );
+    }
     //fprintf( ofp, "%s", inodes[directory[index].inode].block[i] );
     NF_size = NF_size - BLOCK_SIZE;
     i++;

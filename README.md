@@ -3,9 +3,9 @@
 In this assignment you will write a user space portable index-allocated file system. Your program will provide the user with 2<sup>26</sup> bytes of drive space in a disk image. Users will have the ability to create the filesystem image, list the files currently in the file system, add files, remove files, and save the filesystem. Files will persist in the file system image when the program exits.
 
 
-## Requirements
-1. Your program shall print out a prompt of mfs> when it is ready to accept input.
-2. The following commands shall be implemented:
+## Features
+1. Program shall print out a prompt of mfs> when it is ready to accept input.
+2. Following commands are implemented (or implemented in next update):
 
 |Command|Usage|Description|
 |-------|-----|-----------|

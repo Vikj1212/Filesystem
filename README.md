@@ -177,16 +177,6 @@ The command shall take the form:
 
 The cipher is required to be 256 bits.
 
-## Nonfunctional Requirements
-1. You may code your solution in C or C++.
-2. C files shall end in .c . C++ files shall end in .cpp
-3. Your source files must be ASCII text files. No binary submissions will be accepted.
-4. Tabs or spaces shall be used to indent the code. Your code must use one or the other. All indentation must be consistent.
-5. No line of code shall exceed 100 characters.
-6. Each source code file shall have the following header filled out:
-7. All code must be well commented. This means descriptive comments that tell the intent of the code, not just what the code is executing. 
-8. Keep your curly brace placement consistent. If you place curly braces on a new line , always place curly braces on a new end. Don’t mix end line brace placement with new line brace placement.
-9. Each function should have a header that describes its name, any parameters expected, any return values, as well as a description of what the function does. 
  
 
 Compiled with:
